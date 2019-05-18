@@ -1,9 +1,13 @@
+using Chatter.Auth.MongoIdentity;
+using Chatter.Auth.MongoIdentity.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Chatter.Auth.Api.Extensions;
 
 namespace Chatter.Auth.Api
 {
@@ -26,6 +30,18 @@ namespace Chatter.Auth.Api
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.RegisterMongoIdentity<ApplicationUser, IdentityRole>(identityOptions => 
+            {
+                identityOptions.Lockout.MaxFailedAccessAttempts = 100;
+                identityOptions.SignIn.RequireConfirmedEmail = false;
+                identityOptions.SignIn.RequireConfirmedPhoneNumber = false;
+            }, mongo => 
+            {
+                mongo.ConnectionString = "mongodb://localhost:27017/Chatter";
+                mongo.DbName = "Chatter";
+            });
+
+            services.RegisterRepositories();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -47,6 +63,8 @@ namespace Chatter.Auth.Api
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }
