@@ -41,6 +41,7 @@ namespace Chatter.Auth.Api
                 mongo.DbName = "Chatter";
             });
 
+            services.RegisterIdentityServer();
             services.RegisterRepositories();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -64,7 +65,7 @@ namespace Chatter.Auth.Api
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseAuthentication();
+            app.UseIdentityServer();
 
             app.UseMvc();
         }
