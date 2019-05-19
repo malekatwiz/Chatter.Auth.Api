@@ -10,7 +10,15 @@ namespace Chatter.Auth.MongoIdentity.Repository
 
         public RepositoryBase(string connectionString, string dbName)
         {
+            //var credentials = MongoCredential.CreateCredential(dbName, "root", "example");
+            //var settings = new MongoClientSettings
+            //{
+            //    Credential = credentials,
+            //    Server = new MongoServerAddress("localhost", 27018)
+            //};
+
             MongoClient = new MongoClient(connectionString);
+            //MongoClient = new MongoClient(settings);
             Db = MongoClient.GetDatabase(dbName);
         }
 

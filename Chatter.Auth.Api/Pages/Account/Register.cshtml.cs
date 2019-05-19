@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 namespace Chatter.Auth.Api.Pages.Account
 {
     [AllowAnonymous]
-    [ValidateAntiForgeryToken]
     public class RegisterModel : PageModel
     {
         private UserManager<ApplicationUser> _userManager;

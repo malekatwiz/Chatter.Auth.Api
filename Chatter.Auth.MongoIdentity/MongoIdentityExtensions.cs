@@ -45,6 +45,7 @@ namespace Chatter.Auth.MongoIdentity
                 options.Events.RaiseSuccessEvents = true;
                 options.Events.RaiseInformationEvents = true;
                 options.UserInteraction.LoginUrl = "/account/login";
+                //options.UserInteraction.LogoutUrl = "/account/logout";
             })
             .AddDeveloperSigningCredential()
             .AddInMemoryIdentityResources(GetIdentityResources())
@@ -83,7 +84,7 @@ namespace Chatter.Auth.MongoIdentity
                     RequireConsent = false,
                     RedirectUris = {"https://localhost:44343/signin-oidc"},
                     PostLogoutRedirectUris = {"https://localhost:44343/signout-callback-oidc"},
-
+                    
                     AllowedCorsOrigins = {"https://localhost:44343/"},
                     AllowAccessTokensViaBrowser = true,
                     AccessTokenLifetime = 3600

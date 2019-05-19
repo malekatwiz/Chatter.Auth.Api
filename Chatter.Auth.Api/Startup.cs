@@ -32,11 +32,12 @@ namespace Chatter.Auth.Api
 
             services.RegisterMongoIdentity<ApplicationUser, IdentityRole>(identityOptions => 
             {
-                identityOptions.Lockout.MaxFailedAccessAttempts = 100;
+                identityOptions.Lockout.MaxFailedAccessAttempts = 5;
                 identityOptions.SignIn.RequireConfirmedEmail = false;
                 identityOptions.SignIn.RequireConfirmedPhoneNumber = false;
             }, mongo => 
             {
+                //mongo.ConnectionString = "mongodb://mongodb:27018/Chatter";
                 mongo.ConnectionString = "mongodb://localhost:27017/Chatter";
                 mongo.DbName = "Chatter";
             });

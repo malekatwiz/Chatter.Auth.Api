@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  chatter.auth.api:
+    image: ${DOCKER_REGISTRY-}chatterauthapi
+    build:
+      context: .
+      dockerfile: Chatter.Auth.Api/Dockerfile

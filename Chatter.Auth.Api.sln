@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatter.Auth.Api", "Chatter.Auth.Api\Chatter.Auth.Api.csproj", "{FC21F6B6-C338-4646-BD50-6BBED35B5A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatter.Auth.Api", "Chatter.Auth.Api\Chatter.Auth.Api.csproj", "{FC21F6B6-C338-4646-BD50-6BBED35B5A45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatter.Auth.MongoIdentity", "Chatter.Auth.MongoIdentity\Chatter.Auth.MongoIdentity.csproj", "{A81C9023-238D-4450-A0A9-46B5C4BEFCCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatter.Auth.MongoIdentity", "Chatter.Auth.MongoIdentity\Chatter.Auth.MongoIdentity.csproj", "{A81C9023-238D-4450-A0A9-46B5C4BEFCCA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{19F1DC9E-1B1C-4E3B-8863-7033F474930D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A81C9023-238D-4450-A0A9-46B5C4BEFCCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A81C9023-238D-4450-A0A9-46B5C4BEFCCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A81C9023-238D-4450-A0A9-46B5C4BEFCCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F1DC9E-1B1C-4E3B-8863-7033F474930D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F1DC9E-1B1C-4E3B-8863-7033F474930D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F1DC9E-1B1C-4E3B-8863-7033F474930D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F1DC9E-1B1C-4E3B-8863-7033F474930D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
