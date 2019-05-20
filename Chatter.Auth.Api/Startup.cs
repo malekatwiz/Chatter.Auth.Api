@@ -38,8 +38,8 @@ namespace Chatter.Auth.Api
             }, mongo => 
             {
                 //mongo.ConnectionString = "mongodb://mongodb:27018/Chatter";
-                mongo.ConnectionString = "mongodb://localhost:27017/Chatter";
-                mongo.DbName = "Chatter";
+                mongo.ConnectionString = "mongodb://localhost:27017/ChatterAuth";
+                mongo.DbName = "ChatterAuth";
             });
 
             services.RegisterIdentityServer();

@@ -40,12 +40,8 @@ namespace Chatter.Auth.MongoIdentity
         {
             services.AddIdentityServer(options =>
             {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-                options.Events.RaiseInformationEvents = true;
                 options.UserInteraction.LoginUrl = "/account/login";
-                //options.UserInteraction.LogoutUrl = "/account/logout";
+                options.UserInteraction.LogoutUrl = "/account/logout";
             })
             .AddDeveloperSigningCredential()
             .AddInMemoryIdentityResources(GetIdentityResources())
@@ -77,17 +73,35 @@ namespace Chatter.Auth.MongoIdentity
             {
                 new Client
                 {
-                    ClientId = "Chatter.App",
-                    ClientName = "Chatter App",
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowedScopes = {IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes .Profile},
+                    ClientId = "Chatter.Api",
+                    ClientName = "Chatter Api",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "Chatter.Api"
+                    },
                     RequireConsent = false,
-                    RedirectUris = {"https://localhost:44343/signin-oidc"},
-                    PostLogoutRedirectUris = {"https://localhost:44343/signout-callback-oidc"},
-                    
-                    AllowedCorsOrigins = {"https://localhost:44343/"},
+                    RedirectUris = {"https://localhost:44391/signin-oidc"},
+                    PostLogoutRedirectUris = { "https://localhost:44391/signout-callback-oidc" }
+                },
+                new Client
+                {
+                    ClientId = "Chatter.UI",
+                    ClientSecrets = {new Secret("Secret".Sha256())},
+                    ClientName = "Chatter UI",
+                    AllowedGrantTypes = GrantTypes.ImplicitAndClientCredentials,
+                    RequireConsent = false,
+                    RedirectUris = { "https://localhost:44391/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:44391/signout-callback-oidc" },
                     AllowAccessTokensViaBrowser = true,
-                    AccessTokenLifetime = 3600
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "Chatter.Api"
+                    }
                 }
             };
         }
